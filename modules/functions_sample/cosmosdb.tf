@@ -1,7 +1,7 @@
 resource "azurerm_cosmosdb_account" "functions_sample" {
   name                = "${var.prefix}-db"
   resource_group_name = "${var.resource_group_name}"
-  location            = "${var.location}"
+  location            = "${var.region}"
   offer_type          = "Standard"
   kind                = "GlobalDocumentDB"
 
@@ -12,7 +12,7 @@ resource "azurerm_cosmosdb_account" "functions_sample" {
   }
 
   geo_location {
-    location          = "${var.location}"
+    location          = "${var.region}"
     failover_priority = 0
   }
 }

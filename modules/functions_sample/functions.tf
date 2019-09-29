@@ -1,7 +1,7 @@
 resource "azurerm_app_service_plan" "functions_sample" {
   name                = "${var.prefix}-service-plan"
   resource_group_name = "${var.resource_group_name}"
-  location            = "${var.location}"
+  location            = "${var.region}"
   kind                = "FunctionApp"
 
   tags {
@@ -17,7 +17,7 @@ resource "azurerm_app_service_plan" "functions_sample" {
 resource "azurerm_function_app" "functions_sample" {
   name                      = "${var.prefix}-functions"
   resource_group_name       = "${var.resource_group_name}"
-  location                  = "${var.location}"
+  location                  = "${var.region}"
   app_service_plan_id       = "${azurerm_app_service_plan.functions_sample.id}"
   storage_connection_string = "${azurerm_storage_account.functions_sample.primary_connection_string}"
   version                   = "~2"
